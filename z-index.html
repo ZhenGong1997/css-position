@@ -4,8 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{margin:0px; padding:0px; box-sizing: border-box;}
+        div{
+           color:black; 
+        }
+        .container{
+            border:1px solid red;
+            height:200px;
+            background:white;
+            
+        }
+        .a{
+            position:relative;
+            z-index:1;
+            border:1px solid green;
+        }
+        .a2{
+            background:rgba(0,0,255,0.5);
+            position:relative;
+            z-index:3;
+            height:80px;
+            width:80px;
+            border:1px solid green;
+        }
+        .a3{
+            position:relative;
+            /* -1逃不出上下文层叠的小世界，会在a2上面 */
+            z-index:-1;
+            height:50px;
+            width:50px;
+            background:green;
+            
+        }
+        .b{
+            position:relative;
+            z-index:2;
+        }
+        .b2{
+            position:relative;
+            z-index:5;
+            height:50px;
+            width:50px;
+            background:red; 
+            top:-40px;
+        }
+    </style>
 </head>
 <body>
-    
+    <!--  -->
+    <div class="container">
+        <div class="a">1
+            <div class="a2">
+                <div class="a3">10</div>
+            </div>
+        </div>
+        <div class="b">
+            <div class="b2">5</div>
+        </div>
+    </div>
 </body>
 </html>
